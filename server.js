@@ -21,7 +21,7 @@ app.post("/recepe",(req,res,next)=>{
     console.log("this the value of food_name",food_name)
     console.log("this the value of food_ingredients",food_ingredients.toString());
     console.log("this the value of with jSON food_ingredients",food_ingredients);
-    pool.query("insert into recepe(food_name,food_ingredients,food_instruction,food_photo) values($1,$2,$3,$4) returning *",[food_name,food_ingredients.toString(),food_instruction.toString(),food_photo]).then((data)=>res.json(data.rows)).catch((e)=>res.sendStatus(500))//.send(e));
+    pool.query("insert into recepe(food_name,food_ingredients,food_instruction,food_photo) values($1,$2,$3,$4) returning *",[food_name.toString(),food_ingredients.toString(),food_instruction.toString(),food_photo]).then((data)=>res.json(data.rows)).catch((e)=>res.sendStatus(500))//.send(e));
 })
 app.delete('/recepe/:id',(req,res)=>{
     const {id}=req.params;
